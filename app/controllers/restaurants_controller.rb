@@ -14,5 +14,19 @@ class RestaurantsController < ApplicationController
         end
       end
 
+      def destroy
+        if @restaurant
+          @restaurant.destroy
+          head :no_content
+        else
+          render json: { error: 'Restaurant not found' }, status: :not_found
+        end
+      end
+    
+      private
+    
+      def set_restaurant
+        @restaurant = Restaurant.find_by(id: params[:id])
+      end
     end
      
