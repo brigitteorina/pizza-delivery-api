@@ -5,6 +5,14 @@ class RestaurantsController < ApplicationController
         @restaurants = Restaurant.all
         render json: @restaurants
       end
-      
+
+      def show
+        if @restaurant
+          render json: @restaurant, include: :pizzas
+        else
+          render json: { error: 'Restaurant not found' }, status: :not_found
+        end
+      end
+
     end
      
