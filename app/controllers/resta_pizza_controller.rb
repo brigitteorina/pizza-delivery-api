@@ -1,2 +1,0 @@
-class RestaPizzaController < ApplicationController
-end
